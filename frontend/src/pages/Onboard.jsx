@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { api } from "../api";
 import { useAuth } from "../auth.jsx";
 import RiskBadge from "../components/RiskBadge.jsx";
