@@ -250,7 +250,47 @@ tbody tr:hover { background: #fafbfc; }
 .brand-lg { font-size: 22px; font-weight: 700; color: var(--brand); }
 .demo-accounts { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
+/* ---------- Clickable rows + review modal ---------- */
+tr.clickable { cursor: pointer; }
+tr.clickable:hover { background: #eef4fb; }
+.chip-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  z-index: 50;
+  overflow-y: auto;
+}
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 560px;
+  max-width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.modal-body { padding: 18px 20px; }
+.kv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  padding-bottom: 6px;
+}
+
 @media (max-width: 900px) {
   .grid-2 { grid-template-columns: 1fr; }
   .kpis { grid-template-columns: repeat(2, 1fr); }
+  .modal { width: 100%; }
+  .kv { grid-template-columns: 1fr; }
 }
