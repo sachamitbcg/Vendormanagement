@@ -1,2 +1,2 @@
 # Vendormanagement
-Vendor screening m
+Vendor screening process
