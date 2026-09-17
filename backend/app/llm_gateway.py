@@ -157,6 +157,27 @@ def _extract_json(text: str) -> str:
     return text
 
 
+def _http_client():
+    """Build an httpx client that trusts the OS certificate store.
+
+    On corporate networks that do TLS inspection, the proxy presents a corporate root
+    CA that Python's bundled `certifi` list doesn't know about — so HTTPS to Claude fails
+    with CERTIFICATE_VERIFY_FAILED even though the key and network are fine. `truststore`
+    makes Python use the OS trust store (the same one curl/browsers use), which already
+    trusts that corporate CA. Falls back to the SDK default if truststore isn't installed.
+    """
+    try:
+        import ssl
+
+        import httpx
+        import truststore
+
+        ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        return httpx.Client(verify=ctx, timeout=settings.llm_timeout_seconds)
+    except Exception:
+        return None  # anthropic SDK will create its own default client
+
+
 # ---------------------------------------------------------------------------
 # Main entry point
 # ---------------------------------------------------------------------------
@@ -173,6 +194,7 @@ def assess(vendor: VendorSubmit, findings: ScreeningFindings) -> AIAssessment:
         api_key=settings.anthropic_api_key,
         timeout=settings.llm_timeout_seconds,
         max_retries=1,  # SDK retries transient 429/5xx once before raising
+        http_client=_http_client(),
     )
     user_message = _build_user_message(vendor, findings)
 
