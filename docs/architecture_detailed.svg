@@ -1,0 +1,358 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1760" height="1490" viewBox="0 0 1760 1490" font-family="Helvetica, Arial, sans-serif">
+<rect width="1760" height="1490" fill="#FFFFFF"/>
+
+<!-- ================= TITLE ================= -->
+<text x="40" y="48" font-size="27" font-weight="bold" fill="#0A2540">FinanceOS — Solution Architecture</text>
+<text x="40" y="76" font-size="14.5" fill="#4A5D70">Process 3: Vendor Risk &amp; Onboarding Screener &#183; React SPA + FastAPI + SQLite &#183; Anthropic Claude &#183; runs locally</text>
+<line x1="40" y1="92" x2="1720" y2="92" stroke="#0A2540" stroke-width="2"/>
+
+<!-- ================= BAND 1 — PEOPLE ================= -->
+<rect x="40" y="110" width="1185" height="110" rx="6" fill="#EEF2F7" stroke="#C3CFDD" stroke-width="1.5"/>
+<text x="56" y="133" font-size="14.5" font-weight="bold" fill="#5A6C7E">1 &#183; PEOPLE</text>
+<text x="250" y="133" font-size="13" fill="#7A8794">— who uses this</text>
+
+<rect x="90" y="148" width="250" height="56" rx="5" fill="#FFFFFF" stroke="#8FA3B8" stroke-width="1.5"/>
+<text x="215" y="172" font-size="14" font-weight="bold" fill="#0A2540" text-anchor="middle">Procurement Analyst</text>
+<text x="215" y="191" font-size="11" fill="#5A6C7E" text-anchor="middle">submits new vendors for screening</text>
+
+<rect x="370" y="148" width="250" height="56" rx="5" fill="#FFFFFF" stroke="#8FA3B8" stroke-width="1.5"/>
+<text x="495" y="172" font-size="14" font-weight="bold" fill="#0A2540" text-anchor="middle">Finance Reviewer</text>
+<text x="495" y="191" font-size="11" fill="#5A6C7E" text-anchor="middle">approves, or overrides the AI tier</text>
+
+<text x="655" y="170" font-size="11.5" fill="#5A6C7E">Username and password login. Two roles held on the user record: analyst</text>
+<text x="655" y="188" font-size="11.5" fill="#5A6C7E">(submit) and reviewer (approve or override). No single sign-on — out of scope.</text>
+
+<!-- ================= BAND 2 — FRONTEND ================= -->
+<rect x="40" y="260" width="1185" height="150" rx="6" fill="#E8F1FB" stroke="#9EC0E4" stroke-width="1.5"/>
+<text x="56" y="283" font-size="14.5" font-weight="bold" fill="#2E6DB4">2 &#183; FRONTEND</text>
+<text x="700" y="283" font-size="13" fill="#5E8FC0">— the five screens a Finance user sees in the browser</text>
+
+<rect x="90" y="315" width="210" height="76" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.5"/>
+<text x="195" y="339" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Login</text>
+<text x="195" y="358" font-size="10.5" fill="#5A6C7E" text-anchor="middle">email + password</text>
+<text x="195" y="374" font-size="10.5" fill="#5A6C7E" text-anchor="middle">holds session token</text>
+
+<rect x="320" y="315" width="210" height="76" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.5"/>
+<text x="425" y="339" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Vendor Onboarding</text>
+<text x="425" y="358" font-size="10.5" fill="#5A6C7E" text-anchor="middle">name, ABN, bank account,</text>
+<text x="425" y="374" font-size="10.5" fill="#5A6C7E" text-anchor="middle">contact, category</text>
+<text x="390" y="403" font-size="9.5" fill="#2E6DB4" text-anchor="middle">step 2</text>
+
+<rect x="550" y="315" width="210" height="76" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="2.5"/>
+<text x="655" y="339" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Screening Result</text>
+<text x="655" y="358" font-size="10.5" fill="#5A6C7E" text-anchor="middle">tier &#183; anomalies &#183; rationale</text>
+<text x="655" y="374" font-size="10.5" fill="#5A6C7E" text-anchor="middle">what to verify &#183; override</text>
+<text x="655" y="403" font-size="9.5" fill="#2E6DB4" text-anchor="middle">steps 8 and 9</text>
+
+<rect x="780" y="315" width="210" height="76" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.5"/>
+<text x="885" y="339" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Vendor Master</text>
+<text x="885" y="358" font-size="10.5" fill="#5A6C7E" text-anchor="middle">all vendors, risk tier,</text>
+<text x="885" y="374" font-size="10.5" fill="#5A6C7E" text-anchor="middle">onboarding status</text>
+
+<rect x="1010" y="315" width="210" height="76" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.5"/>
+<text x="1115" y="339" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Eval Log</text>
+<text x="1115" y="358" font-size="10.5" fill="#5A6C7E" text-anchor="middle">AI tier vs human tier,</text>
+<text x="1115" y="374" font-size="10.5" fill="#5A6C7E" text-anchor="middle">override rate</text>
+
+<!-- ================= BAND 3 — BACKEND ================= -->
+<rect x="40" y="450" width="1185" height="290" rx="6" fill="#E9F5EE" stroke="#8FC9A8" stroke-width="1.5"/>
+<text x="56" y="473" font-size="14.5" font-weight="bold" fill="#2E7D53">3 &#183; BACKEND</text>
+<text x="250" y="473" font-size="13" fill="#5FA07C">— the API layer</text>
+
+<rect x="90" y="505" width="210" height="96" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="1.5"/>
+<text x="195" y="528" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Auth</text>
+<text x="195" y="547" font-size="10.5" fill="#5A6C7E" text-anchor="middle">issues + verifies the</text>
+<text x="195" y="563" font-size="10.5" fill="#5A6C7E" text-anchor="middle">login token, hashes</text>
+<text x="195" y="579" font-size="10.5" fill="#5A6C7E" text-anchor="middle">passwords, checks role</text>
+
+<rect x="320" y="505" width="210" height="96" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="1.5"/>
+<text x="425" y="528" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Vendor API</text>
+<text x="425" y="547" font-size="10.5" fill="#5A6C7E" text-anchor="middle">create a vendor</text>
+<text x="425" y="563" font-size="10.5" fill="#5A6C7E" text-anchor="middle">update its status</text>
+<text x="425" y="579" font-size="10.5" fill="#5A6C7E" text-anchor="middle">list vendors and evals</text>
+
+<rect x="550" y="505" width="210" height="96" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="2.5"/>
+<text x="655" y="528" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Screening Engine</text>
+<text x="655" y="546" font-size="10.5" font-weight="bold" fill="#2E7D53" text-anchor="middle">rules, not AI — two checks</text>
+<text x="655" y="563" font-size="10.5" fill="#5A6C7E" text-anchor="middle">duplicates: ABN &#183; bank &#183; partial</text>
+<text x="655" y="579" font-size="10.5" fill="#5A6C7E" text-anchor="middle">completeness: fields + formats</text>
+
+<rect x="780" y="505" width="210" height="96" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="1.5"/>
+<text x="885" y="528" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Audit Logger</text>
+<text x="885" y="547" font-size="10.5" fill="#5A6C7E" text-anchor="middle">records every AI</text>
+<text x="885" y="563" font-size="10.5" fill="#5A6C7E" text-anchor="middle">decision and every</text>
+<text x="885" y="579" font-size="10.5" fill="#5A6C7E" text-anchor="middle">human override</text>
+
+<rect x="1010" y="505" width="210" height="96" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="2.5"/>
+<text x="1115" y="528" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">LLM Gateway</text>
+<text x="1115" y="547" font-size="10.5" fill="#5A6C7E" text-anchor="middle">builds the prompt, calls</text>
+<text x="1115" y="563" font-size="10.5" fill="#5A6C7E" text-anchor="middle">Claude, validates the</text>
+<text x="1115" y="579" font-size="10.5" fill="#5A6C7E" text-anchor="middle">JSON, retries, falls back</text>
+<text x="1055" y="617" font-size="9.5" fill="#2E7D53" text-anchor="middle">step 7</text>
+
+<rect x="1010" y="635" width="210" height="58" rx="5" fill="#FFF9E6" stroke="#C79A20" stroke-width="1.5"/>
+<text x="1115" y="656" font-size="11.5" font-weight="bold" fill="#8A6A10" text-anchor="middle">/prompts/</text>
+<text x="1115" y="674" font-size="10.5" fill="#8A6A10" text-anchor="middle">vendor_screening.md (versioned)</text>
+
+<text x="90" y="625" font-size="12" font-weight="bold" fill="#2E7D53">Order matters: rules first, then the LLM explains.</text>
+<text x="90" y="644" font-size="11.5" fill="#3C6B50">A duplicate is a database fact, not the model&#8217;s</text>
+<text x="90" y="661" font-size="11.5" fill="#3C6B50">opinion. The LLM turns those facts into a tier, a</text>
+<text x="90" y="678" font-size="11.5" fill="#3C6B50">rationale and a reviewer checklist — so the demo</text>
+<text x="90" y="695" font-size="11.5" fill="#3C6B50">stays deterministic and auditable.</text>
+<text x="90" y="719" font-size="11.5" fill="#3C6B50">Pydantic validates the form AND the LLM JSON.</text>
+
+<!-- ================= BAND 4 — DATA ================= -->
+<rect x="40" y="782" width="1185" height="300" rx="6" fill="#FDF1E3" stroke="#E0B378" stroke-width="1.5"/>
+<text x="56" y="805" font-size="14.5" font-weight="bold" fill="#B0701F">4 &#183; DATA</text>
+<text x="250" y="805" font-size="13" fill="#C08B44">— SQLite file database, Alembic migrations (drop and recreate cleanly)</text>
+
+<!-- users -->
+<rect x="140" y="812" width="250" height="240" rx="5" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
+<rect x="140" y="812" width="250" height="28" rx="5" fill="#B0701F"/>
+<text x="265" y="832" font-size="12.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">users</text>
+<text x="153" y="860" font-size="10.5" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="153" y="878" font-size="10.5" font-family="monospace" fill="#0A2540">    email</text>
+<text x="153" y="896" font-size="10.5" font-family="monospace" fill="#0A2540">    password_hash</text>
+<text x="153" y="914" font-size="10.5" font-family="monospace" fill="#0A2540">    role</text>
+<text x="153" y="932" font-size="10.5" font-family="monospace" fill="#0A2540">    created_at</text>
+<text x="153" y="964" font-size="10" fill="#8A6A10">Two seeded accounts, one per</text>
+<text x="153" y="980" font-size="10" fill="#8A6A10">role, so the override step can</text>
+<text x="153" y="996" font-size="10" fill="#8A6A10">be demoed end to end.</text>
+
+<!-- vendors -->
+<rect x="550" y="812" width="250" height="240" rx="5" fill="#FFFFFF" stroke="#B0701F" stroke-width="2.5"/>
+<rect x="550" y="812" width="250" height="28" rx="5" fill="#B0701F"/>
+<text x="675" y="832" font-size="12.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">vendors</text>
+<text x="563" y="858" font-size="10.5" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="563" y="875" font-size="10.5" font-family="monospace" fill="#0A2540">    name</text>
+<text x="563" y="892" font-size="10.5" font-family="monospace" fill="#0A2540">    abn          (indexed)</text>
+<text x="563" y="909" font-size="10.5" font-family="monospace" fill="#0A2540">    bank_account (indexed)</text>
+<text x="563" y="926" font-size="10.5" font-family="monospace" fill="#0A2540">    contact</text>
+<text x="563" y="943" font-size="10.5" font-family="monospace" fill="#0A2540">    category</text>
+<text x="563" y="960" font-size="10.5" font-family="monospace" fill="#0A2540">    onboarding_status</text>
+<text x="563" y="977" font-size="10.5" font-family="monospace" fill="#C0392B">    risk_tier        AI</text>
+<text x="563" y="994" font-size="10.5" font-family="monospace" fill="#C0392B">    screening_notes  AI</text>
+<text x="563" y="1011" font-size="10.5" font-family="monospace" fill="#C0392B">    ai_rationale     AI</text>
+<text x="563" y="1028" font-size="10.5" font-family="monospace" fill="#1E6B3A">    human_override   human</text>
+<text x="563" y="1045" font-size="10.5" font-family="monospace" fill="#0A2540">    created_at</text>
+
+<!-- audit_log -->
+<rect x="850" y="812" width="250" height="240" rx="5" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
+<rect x="850" y="812" width="250" height="28" rx="5" fill="#B0701F"/>
+<text x="975" y="832" font-size="12.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">audit_log</text>
+<text x="863" y="860" font-size="10.5" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="863" y="878" font-size="10.5" font-family="monospace" fill="#0A2540">FK  user_id</text>
+<text x="863" y="896" font-size="10.5" font-family="monospace" fill="#0A2540">    entity_type</text>
+<text x="863" y="914" font-size="10.5" font-family="monospace" fill="#0A2540">    entity_id</text>
+<text x="863" y="932" font-size="10.5" font-family="monospace" fill="#0A2540">    action</text>
+<text x="863" y="950" font-size="10.5" font-family="monospace" fill="#0A2540">    old_value</text>
+<text x="863" y="968" font-size="10.5" font-family="monospace" fill="#0A2540">    new_value</text>
+<text x="863" y="986" font-size="10.5" font-family="monospace" fill="#0A2540">    timestamp</text>
+<!-- no formal relationship line drawn: entity_type/entity_id is polymorphic, not a real FK -->
+<text x="863" y="1003" font-size="9.5" font-style="italic" fill="#8A6A10">entity_type / entity_id point at</text>
+<text x="863" y="1016" font-size="9.5" font-style="italic" fill="#8A6A10">vendors.id — polymorphic, no FK.</text>
+<text x="863" y="1033" font-size="10" fill="#8A6A10">Feeds the Eval Log screen;</text>
+<text x="863" y="1046" font-size="10" fill="#8A6A10">override rate comes from here.</text>
+
+<!-- relationship: users -> audit_log (real FK) -->
+<path d="M 265 1052 L 265 1066 L 975 1066 L 975 1058" fill="none" stroke="#7A8794" stroke-width="1.5"/>
+<polygon points="969,1066 981,1066 975,1056" fill="#7A8794"/>
+<rect x="558" y="1057" width="176" height="14" fill="#FDF1E3"/>
+<text x="646" y="1068" font-size="9.5" fill="#5A6C7E" text-anchor="middle">FK user_id &#183; 1..N (who did it)</text>
+
+<!-- ================= FLOW ARROWS ================= -->
+<!-- 1: analyst -> login -->
+<line x1="215" y1="206" x2="215" y2="311" stroke="#0A2540" stroke-width="2"/>
+<polygon points="209,305 221,305 215,315" fill="#0A2540"/>
+<circle cx="215" cy="240" r="12" fill="#0A2540"/><text x="215" y="245" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+
+<!-- 3: form -> vendor api -->
+<line x1="470" y1="393" x2="470" y2="501" stroke="#0A2540" stroke-width="2"/>
+<polygon points="464,495 476,495 470,505" fill="#0A2540"/>
+<circle cx="470" cy="430" r="12" fill="#0A2540"/><text x="470" y="435" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+
+<!-- 4: screening engine <-> vendors (query + result) -->
+<line x1="655" y1="605" x2="655" y2="808" stroke="#0A2540" stroke-width="2"/>
+<polygon points="649,802 661,802 655,812" fill="#0A2540"/>
+<polygon points="649,611 661,611 655,601" fill="#0A2540"/>
+<circle cx="655" cy="760" r="12" fill="#0A2540"/><text x="655" y="765" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="672" y="700" font-size="9.5" fill="#5A6C7E">query</text>
+<text x="672" y="712" font-size="9.5" fill="#5A6C7E">result</text>
+
+<!-- 5: prompts -> llm gateway -->
+<line x1="1115" y1="633" x2="1115" y2="607" stroke="#0A2540" stroke-width="2"/>
+<polygon points="1109,613 1121,613 1115,603" fill="#0A2540"/>
+<circle cx="1152" cy="618" r="12" fill="#0A2540"/><text x="1152" y="623" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">5</text>
+
+<!-- 6: llm gateway -> claude api -->
+<line x1="1222" y1="553" x2="1495" y2="553" stroke="#0A2540" stroke-width="2.5"/>
+<polygon points="1491,547 1491,559 1501,553" fill="#0A2540"/>
+<circle cx="1258" cy="553" r="12" fill="#0A2540"/><text x="1258" y="558" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">6</text>
+
+<!-- 10: audit logger -> audit_log -->
+<path d="M 885 605 L 885 760 L 975 760 L 975 806" fill="none" stroke="#0A2540" stroke-width="2"/>
+<polygon points="969,800 981,800 975,810" fill="#0A2540"/>
+<circle cx="930" cy="760" r="12" fill="#0A2540"/><text x="930" y="765" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">10</text>
+
+<!-- 11: read back to the screens — both Vendor Master and Eval Log -->
+<path d="M 1102 880 L 1240 880 L 1240 295" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="6,4"/>
+<path d="M 1240 353 L 1226 353" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="6,4"/>
+<polygon points="1232,347 1232,359 1222,353" fill="#0A2540"/>
+<path d="M 1240 295 L 885 295 L 885 312" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="6,4"/>
+<polygon points="879,306 891,306 885,317" fill="#0A2540"/>
+<circle cx="1240" cy="700" r="12" fill="#FFFFFF" stroke="#0A2540" stroke-width="1.8"/><text x="1240" y="705" font-size="11" font-weight="bold" fill="#0A2540" text-anchor="middle">11</text>
+
+<!-- ================= RIGHT — DATA FLOW ================= -->
+<rect x="1285" y="110" width="435" height="320" rx="6" fill="#F7F9FB" stroke="#C3CFDD" stroke-width="1.5"/>
+<text x="1301" y="134" font-size="13.5" font-weight="bold" fill="#0A2540">DATA FLOW — follow the numbered arrows</text>
+
+<text x="1301" y="158" font-size="10.5" font-weight="bold" fill="#0A2540">1</text>
+<text x="1323" y="158" font-size="10.5" fill="#2E4A63">Analyst signs in; token issued, carrying their role.</text>
+<text x="1301" y="177" font-size="10.5" font-weight="bold" fill="#0A2540">2</text>
+<text x="1323" y="177" font-size="10.5" fill="#2E4A63">Fills the onboarding form. (Happens in the browser.)</text>
+<text x="1301" y="196" font-size="10.5" font-weight="bold" fill="#0A2540">3</text>
+<text x="1323" y="196" font-size="10.5" fill="#2E4A63">Form posted to the API; fields and formats validated.</text>
+<text x="1301" y="215" font-size="10.5" font-weight="bold" fill="#0A2540">4</text>
+<text x="1323" y="215" font-size="10.5" fill="#2E4A63">Screening Engine queries the vendors table for</text>
+<text x="1323" y="230" font-size="10.5" fill="#2E4A63">duplicates: exact ABN &#183; exact bank &#183; partial match.</text>
+<text x="1301" y="249" font-size="10.5" font-weight="bold" fill="#0A2540">5</text>
+<text x="1323" y="249" font-size="10.5" fill="#2E4A63">Findings + form go to the Gateway, which loads the prompt.</text>
+<text x="1301" y="268" font-size="10.5" font-weight="bold" fill="#0A2540">6</text>
+<text x="1323" y="268" font-size="10.5" fill="#2E4A63">HTTPS call to Claude (system + user messages).</text>
+<text x="1301" y="287" font-size="10.5" font-weight="bold" fill="#0A2540">7</text>
+<text x="1323" y="287" font-size="10.5" fill="#2E4A63">JSON reply validated, then written to the vendors row.</text>
+<text x="1323" y="302" font-size="10.5" fill="#2E4A63">(Happens inside the LLM Gateway.)</text>
+<text x="1301" y="321" font-size="10.5" font-weight="bold" fill="#0A2540">8</text>
+<text x="1323" y="321" font-size="10.5" fill="#2E4A63">Result card shows tier, anomalies, verify list, rationale.</text>
+<text x="1301" y="340" font-size="10.5" font-weight="bold" fill="#0A2540">9</text>
+<text x="1323" y="340" font-size="10.5" fill="#2E4A63">Reviewer approves, or overrides the tier and says why.</text>
+<text x="1323" y="355" font-size="10.5" fill="#2E4A63">This is the human gate. Nothing self-approves.</text>
+<text x="1301" y="374" font-size="10.5" font-weight="bold" fill="#0A2540">10</text>
+<text x="1323" y="374" font-size="10.5" fill="#2E4A63">Audit Logger records the AI decision and the override.</text>
+<text x="1301" y="393" font-size="10.5" font-weight="bold" fill="#0A2540">11</text>
+<text x="1323" y="393" font-size="10.5" fill="#2E4A63">Vendor Master and Eval Log read back from the database</text>
+<text x="1323" y="408" font-size="10.5" fill="#2E4A63">— so override rate is measurable from day one.</text>
+
+<!-- ================= RIGHT — EXTERNAL ================= -->
+<rect x="1285" y="450" width="435" height="180" rx="6" fill="#F3EDFA" stroke="#B49BD8" stroke-width="1.5"/>
+<text x="1301" y="474" font-size="14" font-weight="bold" fill="#6B4FA8">5 &#183; EXTERNAL SERVICES &amp; HOSTING</text>
+<text x="1301" y="498" font-size="10.5" fill="#54407F">The only service outside this machine is the model API.</text>
+
+<rect x="1310" y="525" width="385" height="56" rx="5" fill="#FFFFFF" stroke="#6B4FA8" stroke-width="2.5"/>
+<text x="1502" y="547" font-size="13.5" font-weight="bold" fill="#0A2540" text-anchor="middle">Anthropic Claude API</text>
+<text x="1502" y="567" font-size="10.5" fill="#5A6C7E" text-anchor="middle">HTTPS &#183; key read from .env &#183; never committed</text>
+
+<text x="1301" y="602" font-size="10.5" fill="#54407F">Hosting, storage and auth are all local: uvicorn serves the API, vite serves</text>
+<text x="1301" y="618" font-size="10.5" fill="#54407F">the UI, SQLite is a file on disk, login is in-app. No queue — see below.</text>
+
+<!-- ================= RIGHT — LLM CONTRACT ================= -->
+<rect x="1285" y="648" width="435" height="300" rx="6" fill="#FFFFFF" stroke="#6B4FA8" stroke-width="1.5"/>
+<text x="1301" y="672" font-size="13.5" font-weight="bold" fill="#6B4FA8">LLM CALL CONTRACT — steps 5 to 7</text>
+
+<text x="1301" y="696" font-size="11" font-weight="bold" fill="#0A2540">WHAT GOES IN</text>
+<text x="1301" y="714" font-size="10" font-family="monospace" fill="#2E4A63">system: role = finance compliance screener;</text>
+<text x="1301" y="729" font-size="10" font-family="monospace" fill="#2E4A63">        tiering rules; output schema;</text>
+<text x="1301" y="744" font-size="10" font-family="monospace" fill="#2E4A63">        never invent facts not supplied</text>
+<text x="1301" y="761" font-size="10" font-family="monospace" fill="#2E4A63">user:   the vendor form + the rule findings</text>
+
+<text x="1301" y="787" font-size="11" font-weight="bold" fill="#0A2540">WHAT COMES BACK — JSON, schema-validated</text>
+<text x="1301" y="805" font-size="10" font-family="monospace" fill="#2E4A63">{ risk_tier         Low | Medium | High</text>
+<text x="1301" y="820" font-size="10" font-family="monospace" fill="#2E4A63">  anomalies         [string]</text>
+<text x="1301" y="835" font-size="10" font-family="monospace" fill="#2E4A63">  verify_checklist  [string]</text>
+<text x="1301" y="850" font-size="10" font-family="monospace" fill="#2E4A63">  rationale         string   }</text>
+
+<text x="1301" y="876" font-size="11" font-weight="bold" fill="#0A2540">WHERE EACH FIELD LANDS</text>
+<text x="1301" y="894" font-size="10" font-family="monospace" fill="#2E4A63">risk_tier                -> vendors.risk_tier</text>
+<text x="1301" y="909" font-size="9.5" font-family="monospace" fill="#2E4A63">anomalies + verify_checklist -> vendors.screening_notes</text>
+<text x="1301" y="924" font-size="10" font-family="monospace" fill="#2E4A63">rationale                -> vendors.ai_rationale</text>
+<text x="1301" y="941" font-size="10" font-style="italic" fill="#5A6C7E">Every field returned is a field stored. Nothing is discarded.</text>
+
+<!-- ================= RIGHT — FALLBACK ================= -->
+<rect x="1285" y="966" width="435" height="180" rx="6" fill="#FDF0EE" stroke="#C0392B" stroke-width="2"/>
+<text x="1301" y="990" font-size="13.5" font-weight="bold" fill="#C0392B">FALLBACK PATH — when the model call fails</text>
+<text x="1301" y="1013" font-size="10.5" fill="#8C2E22">Trigger: timeout &#183; rate limit &#183; malformed or invalid JSON</text>
+
+<text x="1301" y="1037" font-size="10.5" font-weight="bold" fill="#C0392B">1</text>
+<text x="1319" y="1037" font-size="10.5" fill="#8C2E22">One retry with backoff.</text>
+<text x="1301" y="1057" font-size="10.5" font-weight="bold" fill="#C0392B">2</text>
+<text x="1319" y="1057" font-size="10.5" fill="#8C2E22">Serve the rule findings on their own.</text>
+<text x="1301" y="1077" font-size="10.5" font-weight="bold" fill="#C0392B">3</text>
+<text x="1319" y="1077" font-size="10.5" fill="#8C2E22">Banner: &#8220;AI summary unavailable — the checks below are</text>
+<text x="1319" y="1092" font-size="10.5" fill="#8C2E22">rule-based. Please review manually.&#8221;</text>
+<text x="1301" y="1112" font-size="10.5" font-weight="bold" fill="#C0392B">4</text>
+<text x="1319" y="1112" font-size="10.5" fill="#8C2E22">Status stays pending. Nothing is ever auto-approved.</text>
+<text x="1301" y="1134" font-size="10.5" font-style="italic" fill="#8C2E22">The screen degrades. It never blanks.</text>
+
+<!-- ================= RIGHT — LEGEND ================= -->
+<rect x="1285" y="1164" width="435" height="152" rx="6" fill="#F7F9FB" stroke="#C3CFDD" stroke-width="1.5"/>
+<text x="1301" y="1188" font-size="13.5" font-weight="bold" fill="#0A2540">HOW TO READ THIS DIAGRAM</text>
+
+<circle cx="1308" cy="1206" r="8" fill="#0A2540"/>
+<text x="1324" y="1210" font-size="10.5" fill="#2E4A63">a number on an arrow = data moving between components</text>
+<text x="1301" y="1230" font-size="9.5" fill="#2E6DB4">step 2</text>
+<text x="1339" y="1230" font-size="10.5" fill="#2E4A63">a caption under a box = the step happens inside it</text>
+<line x1="1300" y1="1246" x2="1330" y2="1246" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="6,4"/>
+<text x="1339" y="1250" font-size="10.5" fill="#2E4A63">dashed = reading data back, not a new action</text>
+<text x="1301" y="1270" font-size="10.5" font-family="monospace" fill="#C0392B">AI</text>
+<text x="1324" y="1270" font-size="10.5" fill="#2E4A63">the model writes this column &#183;</text>
+<text x="1518" y="1270" font-size="10.5" font-family="monospace" fill="#1E6B3A">human</text>
+<text x="1570" y="1270" font-size="10.5" fill="#2E4A63">a person does</text>
+<text x="1301" y="1290" font-size="10.5" fill="#2E4A63">Heavy border = the three parts the live demo hinges on.</text>
+<text x="1301" y="1308" font-size="9.5" fill="#5A6C7E">PK / FK = primary / foreign key &#183; 1..N = one row links to many rows</text>
+
+<!-- ================= RIGHT — SCOPE ================= -->
+<rect x="1285" y="1334" width="435" height="126" rx="6" fill="#F4F5F7" stroke="#B8BFC7" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="1301" y="1358" font-size="13" font-weight="bold" fill="#5A6C7E">SCOPE — WHAT IS NOT BUILT, AND WHY</text>
+<text x="1301" y="1379" font-size="10" fill="#6B7783">&#183; Sanctions screening. The brief names it, but Appendix A supplies no</text>
+<text x="1310" y="1393" font-size="10" fill="#6B7783">watchlist. The reviewer checklist raises it as outstanding instead.</text>
+<text x="1301" y="1411" font-size="10" fill="#6B7783">&#183; Processes 1 and 2. Migrations still create invoices, purchase_orders</text>
+<text x="1310" y="1425" font-size="10" fill="#6B7783">and budget_actuals, so the schema matches the brief.</text>
+<text x="1301" y="1443" font-size="10" fill="#6B7783">&#183; No SSO, mobile layouts, multi-tenancy, CI/CD or async queue.</text>
+
+<!-- ================= BOTTOM LEFT — REPO ================= -->
+<rect x="40" y="1105" width="570" height="340" rx="6" fill="#F7F9FB" stroke="#C3CFDD" stroke-width="1.5"/>
+<text x="56" y="1129" font-size="13.5" font-weight="bold" fill="#0A2540">REPOSITORY LAYOUT (Deliverable 2)</text>
+<text x="56" y="1153" font-size="10.5" font-family="monospace" fill="#2E4A63">/README.md                  setup, env vars, seed, run</text>
+<text x="56" y="1172" font-size="10.5" font-family="monospace" fill="#2E4A63">/docs/architecture.png      this diagram</text>
+<text x="56" y="1191" font-size="10.5" font-family="monospace" fill="#2E4A63">/docs/design-decisions.md   3-5 decisions + trade-offs</text>
+<text x="56" y="1210" font-size="10.5" font-family="monospace" fill="#2E4A63">/prompts/vendor_screening.md</text>
+<text x="56" y="1229" font-size="10.5" font-family="monospace" fill="#2E4A63">/src/api/        routes, auth, request schemas</text>
+<text x="56" y="1248" font-size="10.5" font-family="monospace" fill="#2E4A63">/src/screening/  duplicate + completeness rules</text>
+<text x="56" y="1267" font-size="10.5" font-family="monospace" fill="#2E4A63">/src/llm/        gateway, retry, JSON validation</text>
+<text x="56" y="1286" font-size="10.5" font-family="monospace" fill="#2E4A63">/src/db/         models, alembic/, seed (25 vendors)</text>
+<text x="56" y="1305" font-size="10.5" font-family="monospace" fill="#2E4A63">/src/web/        React SPA</text>
+<text x="56" y="1324" font-size="10.5" font-family="monospace" fill="#2E4A63">/.env.example    ANTHROPIC_API_KEY=</text>
+
+<line x1="56" y1="1343" x2="594" y2="1343" stroke="#DDE3EA" stroke-width="1"/>
+<text x="56" y="1365" font-size="10.5" fill="#5A6C7E">A reviewer should get from clone to running app in four commands:</text>
+<text x="56" y="1383" font-size="10.5" font-family="monospace" fill="#2E4A63">cp .env.example .env  &#183;  alembic upgrade head  &#183;  seed  &#183;  run</text>
+<text x="56" y="1404" font-size="10.5" fill="#5A6C7E">Public repo, link shared at least 24 hours before the interview slot.</text>
+<text x="56" y="1427" font-size="10.5" fill="#5A6C7E">Migrations are repeatable — drop the file, re-run, reseed, same state.</text>
+
+<!-- ================= BOTTOM MIDDLE — PRINCIPLES ================= -->
+<rect x="640" y="1105" width="585" height="340" rx="6" fill="#F7F9FB" stroke="#C3CFDD" stroke-width="1.5"/>
+<text x="656" y="1129" font-size="13.5" font-weight="bold" fill="#0A2540">DESIGN PRINCIPLES &#8594; WHERE THEY LIVE IN THIS DESIGN</text>
+
+<text x="656" y="1153" font-size="11.5" font-weight="bold" fill="#2E7D53">Business-first design</text>
+<text x="666" y="1170" font-size="11" fill="#2E4A63">The UI says &#8220;Approve vendor&#8221;, never an endpoint name. The default</text>
+<text x="666" y="1186" font-size="11" fill="#2E4A63">state is the most common action, not the easiest one to code.</text>
+
+<text x="656" y="1211" font-size="11.5" font-weight="bold" fill="#2E7D53">AI assists, it never decides</text>
+<text x="666" y="1228" font-size="11" fill="#2E4A63">The tier is always overridable. The rationale sits beside every</text>
+<text x="666" y="1244" font-size="11" fill="#2E4A63">recommendation. Every decision and every override is logged.</text>
+
+<text x="656" y="1269" font-size="11.5" font-weight="bold" fill="#2E7D53">Prompt engineering discipline</text>
+<text x="666" y="1286" font-size="11" fill="#2E4A63">Prompts live in /prompts/, system + user pattern, JSON schema out.</text>
+<text x="666" y="1302" font-size="11" fill="#2E4A63">The edge cases are already sitting in the seed data.</text>
+
+<text x="656" y="1327" font-size="11.5" font-weight="bold" fill="#2E7D53">Reliability over cleverness</text>
+<text x="666" y="1344" font-size="11" fill="#2E4A63">Loading and empty states throughout. One synchronous model call,</text>
+<text x="666" y="1360" font-size="11" fill="#2E4A63">roughly two to four seconds, with the fallback path to its right.</text>
+
+<text x="656" y="1385" font-size="11.5" font-weight="bold" fill="#2E7D53">Scope discipline</text>
+<text x="666" y="1402" font-size="11" fill="#2E4A63">Two checks built properly rather than three built thinly. Every</text>
+<text x="666" y="1418" font-size="11" fill="#2E4A63">omission is a recorded decision, not an oversight.</text>
+
+<text x="40" y="1478" font-size="10.5" fill="#8A97A5">FinanceOS technical assessment &#183; Process 3 of 3 &#183; every layer runs on the presenter&#8217;s machine &#183; seed data: 25 vendors including 3 exact duplicates and 2 partial duplicates</text>
+
+</svg>

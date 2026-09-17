@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" font-family="Helvetica, Arial, sans-serif">
+<rect width="1600" height="1080" fill="#FFFFFF"/>
+
+<!-- TITLE -->
+<text x="40" y="46" font-size="26" font-weight="bold" fill="#0A2540">FinanceOS — Vendor Risk &amp; Onboarding Screener</text>
+<text x="40" y="70" font-size="14" fill="#5A6C7E">React + FastAPI + SQLite &#183; Anthropic Claude &#183; runs locally</text>
+<line x1="40" y1="84" x2="1560" y2="84" stroke="#0A2540" stroke-width="2"/>
+
+<!-- ================= PEOPLE ================= -->
+<rect x="40" y="110" width="220" height="70" rx="7" fill="#EEF2F7" stroke="#8FA3B8" stroke-width="1.5"/>
+<text x="150" y="140" font-size="13.5" font-weight="bold" fill="#0A2540" text-anchor="middle">Procurement Analyst</text>
+<text x="150" y="158" font-size="10.5" fill="#5A6C7E" text-anchor="middle">submits new vendors</text>
+
+<rect x="40" y="195" width="220" height="70" rx="7" fill="#EEF2F7" stroke="#8FA3B8" stroke-width="1.5"/>
+<text x="150" y="225" font-size="13.5" font-weight="bold" fill="#0A2540" text-anchor="middle">Finance Reviewer</text>
+<text x="150" y="243" font-size="10.5" fill="#5A6C7E" text-anchor="middle">approves or overrides</text>
+
+<!-- ================= FRONTEND ================= -->
+<rect x="320" y="105" width="290" height="185" rx="8" fill="#E8F1FB" stroke="#2E6DB4" stroke-width="1.5"/>
+<text x="336" y="128" font-size="13.5" font-weight="bold" fill="#2E6DB4">FRONTEND</text>
+<text x="336" y="143" font-size="10.5" fill="#5E8FC0">React, in the browser</text>
+
+<rect x="336" y="153" width="258" height="40" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.2"/>
+<text x="465" y="177" font-size="11.5" fill="#0A2540" text-anchor="middle">Login &#8594; Vendor Onboarding form</text>
+
+<rect x="336" y="199" width="258" height="40" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.2"/>
+<text x="465" y="223" font-size="11.5" fill="#0A2540" text-anchor="middle">Screening Result (tier, rationale, override)</text>
+
+<rect x="336" y="245" width="258" height="40" rx="5" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.2"/>
+<text x="465" y="269" font-size="11.5" fill="#0A2540" text-anchor="middle">Vendor Master + Eval Log (all vendors)</text>
+
+<!-- ================= BACKEND ================= -->
+<rect x="655" y="105" width="330" height="185" rx="8" fill="#E9F5EE" stroke="#2E7D53" stroke-width="1.5"/>
+<text x="671" y="128" font-size="13.5" font-weight="bold" fill="#2E7D53">BACKEND — FastAPI</text>
+
+<rect x="671" y="140" width="140" height="65" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="1.2"/>
+<text x="741" y="160" font-size="11.5" font-weight="bold" fill="#0A2540" text-anchor="middle">Auth</text>
+<text x="741" y="176" font-size="9.5" fill="#5A6C7E" text-anchor="middle">login token,</text>
+<text x="741" y="190" font-size="9.5" fill="#5A6C7E" text-anchor="middle">role check</text>
+
+<rect x="825" y="140" width="145" height="65" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="2"/>
+<text x="897" y="158" font-size="11" font-weight="bold" fill="#0A2540" text-anchor="middle">Screening Engine</text>
+<text x="897" y="174" font-size="9.5" fill="#5A6C7E" text-anchor="middle">duplicate check</text>
+<text x="897" y="188" font-size="9.5" fill="#5A6C7E" text-anchor="middle">completeness check</text>
+
+<rect x="671" y="215" width="299" height="65" rx="5" fill="#FFFFFF" stroke="#2E7D53" stroke-width="1.2"/>
+<text x="820" y="235" font-size="11.5" font-weight="bold" fill="#0A2540" text-anchor="middle">Audit Logger</text>
+<text x="820" y="252" font-size="9.5" fill="#5A6C7E" text-anchor="middle">writes every AI decision and every human override to audit_log</text>
+<text x="820" y="266" font-size="9" font-style="italic" fill="#8A97A5" text-anchor="middle">(rules, not AI — a fact never invented by the model)</text>
+
+<!-- ================= LLM GATEWAY ================= -->
+<rect x="1010" y="105" width="270" height="185" rx="8" fill="#E9F5EE" stroke="#2E7D53" stroke-width="2.5"/>
+<text x="1026" y="128" font-size="13.5" font-weight="bold" fill="#2E7D53">LLM GATEWAY</text>
+<text x="1026" y="146" font-size="10" fill="#5A6C7E">loads /prompts/vendor_screening.md,</text>
+<text x="1026" y="160" font-size="10" fill="#5A6C7E">calls Claude, validates the JSON reply,</text>
+<text x="1026" y="174" font-size="10" fill="#5A6C7E">retries once, then falls back</text>
+
+<rect x="1026" y="184" width="238" height="30" rx="4" fill="#FFF9E6" stroke="#C79A20" stroke-width="1.2"/>
+<text x="1145" y="203" font-size="10" fill="#8A6A10" text-anchor="middle">system + user prompt, versioned in /prompts/</text>
+
+<rect x="1026" y="222" width="238" height="58" rx="4" fill="#FDF0EE" stroke="#C0392B" stroke-width="1.2"/>
+<text x="1145" y="238" font-size="9.5" font-weight="bold" fill="#C0392B" text-anchor="middle">on timeout / bad JSON:</text>
+<text x="1145" y="252" font-size="9.5" fill="#8C2E22" text-anchor="middle">retry once, then show rule</text>
+<text x="1145" y="265" font-size="9.5" fill="#8C2E22" text-anchor="middle">findings alone. Never auto-approves.</text>
+
+<!-- ================= CLAUDE API ================= -->
+<rect x="1320" y="105" width="240" height="90" rx="8" fill="#F3EDFA" stroke="#6B4FA8" stroke-width="2.5"/>
+<text x="1440" y="135" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Anthropic</text>
+<text x="1440" y="153" font-size="13" font-weight="bold" fill="#0A2540" text-anchor="middle">Claude API</text>
+<text x="1440" y="173" font-size="9.5" fill="#5A6C7E" text-anchor="middle">HTTPS &#183; key in .env</text>
+<text x="1440" y="187" font-size="9.5" fill="#5A6C7E" text-anchor="middle">only external service</text>
+
+<!-- LLM contract -->
+<rect x="1320" y="210" width="240" height="196" rx="8" fill="#FFFFFF" stroke="#6B4FA8" stroke-width="1.5"/>
+<text x="1336" y="230" font-size="11.5" font-weight="bold" fill="#6B4FA8">WHAT GOES IN / COMES BACK</text>
+<text x="1336" y="248" font-size="9.5" font-family="monospace" fill="#2E4A63">in:  vendor form +</text>
+<text x="1336" y="261" font-size="9.5" font-family="monospace" fill="#2E4A63">     rule findings</text>
+<text x="1336" y="281" font-size="9.5" font-family="monospace" fill="#2E4A63">out: risk_tier (Low/Med/High)</text>
+<text x="1336" y="294" font-size="9.5" font-family="monospace" fill="#2E4A63">     anomalies []</text>
+<text x="1336" y="307" font-size="9.5" font-family="monospace" fill="#2E4A63">     verify_checklist []</text>
+<text x="1336" y="320" font-size="9.5" font-family="monospace" fill="#2E4A63">     rationale (string)</text>
+<text x="1336" y="337" font-size="9" font-family="monospace" fill="#5A6C7E">-&gt; risk_tier            vendors.risk_tier</text>
+<text x="1336" y="349" font-size="9" font-family="monospace" fill="#5A6C7E">-&gt; anomalies+checklist  vendors.screening_notes</text>
+<text x="1336" y="361" font-size="9" font-family="monospace" fill="#5A6C7E">-&gt; rationale            vendors.ai_rationale</text>
+<text x="1336" y="376" font-size="9" font-style="italic" fill="#5A6C7E">Every field returned is stored — nothing is discarded.</text>
+
+<!-- ================= DATABASE ================= -->
+<rect x="40" y="310" width="1240" height="290" rx="8" fill="#FDF1E3" stroke="#E0B378" stroke-width="1.5"/>
+<text x="56" y="333" font-size="13.5" font-weight="bold" fill="#B0701F">DATABASE — SQLite, Alembic migrations</text>
+<text x="56" y="349" font-size="9.5" font-style="italic" fill="#B0701F">repeatable: drop and recreate cleanly</text>
+
+<!-- users -->
+<rect x="70" y="352" width="230" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
+<rect x="70" y="352" width="230" height="26" rx="6" fill="#B0701F"/>
+<text x="185" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">users</text>
+<text x="82" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="82" y="412" font-size="10" font-family="monospace" fill="#0A2540">    email</text>
+<text x="82" y="428" font-size="10" font-family="monospace" fill="#0A2540">    password_hash</text>
+<text x="82" y="444" font-size="10" font-family="monospace" fill="#0A2540">    role</text>
+<text x="82" y="460" font-size="10" font-family="monospace" fill="#0A2540">    created_at</text>
+<text x="82" y="486" font-size="9" fill="#8A6A10">Two seeded accounts —</text>
+<text x="82" y="499" font-size="9" fill="#8A6A10">one analyst, one reviewer.</text>
+<text x="82" y="512" font-size="9" fill="#8A6A10">Override step demos end</text>
+<text x="82" y="525" font-size="9" fill="#8A6A10">to end from these logins.</text>
+
+<!-- vendors -->
+<rect x="340" y="352" width="270" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="2.5"/>
+<rect x="340" y="352" width="270" height="26" rx="6" fill="#B0701F"/>
+<text x="475" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">vendors</text>
+<text x="352" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="352" y="411" font-size="10" font-family="monospace" fill="#0A2540">    name, contact, category</text>
+<text x="352" y="426" font-size="10" font-family="monospace" fill="#0A2540">    abn          (indexed)</text>
+<text x="352" y="441" font-size="10" font-family="monospace" fill="#0A2540">    bank_account (indexed)</text>
+<text x="352" y="456" font-size="10" font-family="monospace" fill="#0A2540">    onboarding_status</text>
+<text x="352" y="471" font-size="10" font-family="monospace" fill="#C0392B">    risk_tier        &#8592; AI</text>
+<text x="352" y="486" font-size="10" font-family="monospace" fill="#C0392B">    screening_notes  &#8592; AI</text>
+<text x="352" y="501" font-size="10" font-family="monospace" fill="#C0392B">    ai_rationale     &#8592; AI</text>
+<text x="352" y="516" font-size="10" font-family="monospace" fill="#1E6B3A">    human_override   &#8592; human</text>
+<text x="352" y="531" font-size="10" font-family="monospace" fill="#0A2540">    created_at</text>
+
+<!-- audit_log -->
+<rect x="650" y="352" width="250" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
+<rect x="650" y="352" width="250" height="26" rx="6" fill="#B0701F"/>
+<text x="775" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">audit_log</text>
+<text x="662" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="662" y="411" font-size="10" font-family="monospace" fill="#0A2540">FK  user_id</text>
+<text x="662" y="426" font-size="10" font-family="monospace" fill="#0A2540">    entity_type, entity_id</text>
+<text x="662" y="441" font-size="10" font-family="monospace" fill="#0A2540">    action</text>
+<text x="662" y="456" font-size="10" font-family="monospace" fill="#0A2540">    old_value, new_value</text>
+<text x="662" y="471" font-size="10" font-family="monospace" fill="#0A2540">    timestamp</text>
+<text x="662" y="497" font-size="9" font-style="italic" fill="#8A6A10">entity_id points at vendors.id —</text>
+<text x="662" y="510" font-size="9" font-style="italic" fill="#8A6A10">polymorphic, not a formal FK.</text>
+<text x="662" y="530" font-size="9" fill="#8A6A10">Feeds the Eval Log &amp; override rate.</text>
+
+<!-- users -> audit_log real FK -->
+<path d="M 185 557 L 185 575 L 775 575 L 775 561" fill="none" stroke="#7A8794" stroke-width="1.4"/>
+<polygon points="769,555 781,555 775,565" fill="#7A8794"/>
+<rect x="620" y="566" width="200" height="15" fill="#FDF1E3"/>
+<text x="720" y="578" font-size="9.5" fill="#5A6C7E" text-anchor="middle">FK user_id &#183; 1..N (who did it)</text>
+
+<!-- not-built schema -->
+<rect x="930" y="352" width="330" height="205" rx="6" fill="#F4F5F7" stroke="#B8BFC7" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="1095" y="378" font-size="11.5" font-weight="bold" fill="#7A8794" text-anchor="middle">Schema present, not exercised in this POC</text>
+<text x="945" y="404" font-size="10" font-family="monospace" fill="#7A8794">invoices &#183; purchase_orders &#183; budget_actuals</text>
+<text x="945" y="428" font-size="9.5" fill="#7A8794">Migrations create all six tables named in the</text>
+<text x="945" y="443" font-size="9.5" fill="#7A8794">brief so the schema matches it. Processes 1</text>
+<text x="945" y="458" font-size="9.5" fill="#7A8794">and 2 are not built for this demo — a scope</text>
+<text x="945" y="473" font-size="9.5" fill="#7A8794">call recorded in design-decisions.md.</text>
+<text x="945" y="499" font-size="9.5" fill="#7A8794">Sanctions screening is out of scope too:</text>
+<text x="945" y="514" font-size="9.5" fill="#7A8794">the brief names it but Appendix A supplies</text>
+<text x="945" y="529" font-size="9.5" fill="#7A8794">no watchlist to screen against.</text>
+
+<!-- ================= FLOW ARROWS (single numbering, matches list below) =================
+     Routing rule: any line crossing between bands travels in the clear 290-310 gap
+     (a shared "bus"), never through the interior of another labelled box. -->
+
+<!-- 1: analyst -> frontend login -->
+<line x1="260" y1="145" x2="316" y2="145" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="312,139 312,151 322,145" fill="#0A2540"/>
+<circle cx="288" cy="128" r="12" fill="#0A2540"/><text x="288" y="133" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+
+<!-- reviewer -> frontend Screening Result row (their entry point for step 7's approve/override) -->
+<line x1="260" y1="219" x2="316" y2="219" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="312,213 312,225 322,219" fill="#0A2540"/>
+<text x="288" y="210" font-size="9" font-style="italic" fill="#5A6C7E" text-anchor="middle">step 7</text>
+
+<!-- 2: frontend form -> backend auth (same channel also carries the reviewer's approve/override) -->
+<line x1="594" y1="173" x2="667" y2="173" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="663,167 663,179 673,173" fill="#0A2540"/>
+<circle cx="630" cy="192" r="12" fill="#0A2540"/><text x="630" y="197" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+
+<!-- 3: screening engine <-> vendors (query + result). Exit past Screening Engine's
+     right edge (985) BEFORE dropping, so the vertical run never crosses Audit Logger (671-970). -->
+<path d="M 968 152 L 985 152 L 985 298 L 475 298 L 475 348" fill="none" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="469,342 481,342 475,352" fill="#0A2540"/>
+<polygon points="979,146 991,146 985,156" fill="none" stroke="#0A2540"/>
+<circle cx="985" cy="230" r="12" fill="#0A2540"/><text x="985" y="235" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+
+<!-- 4: screening engine -> LLM gateway (findings handoff). Short direct line in the
+     blank gap between the description text (ends ~174) and the prompt box (starts 184). -->
+<line x1="970" y1="179" x2="1006" y2="179" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="1002,173 1002,185 1012,179" fill="#0A2540"/>
+<circle cx="988" cy="198" r="12" fill="#0A2540"/><text x="988" y="203" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">4</text>
+
+<!-- 5: gateway -> claude api -->
+<line x1="1280" y1="150" x2="1316" y2="150" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="1312,144 1312,156 1322,150" fill="#0A2540"/>
+<circle cx="1298" cy="130" r="12" fill="#0A2540"/><text x="1298" y="135" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">5</text>
+
+<!-- 6: claude's validated reply, WRITTEN by the gateway into vendors — solid line,
+     because this is a write, not a read-back (dashed is reserved for reads, see legend).
+     Bus sits at y=296, well clear of badge 8's jog at y=310, so the two never merge. -->
+<path d="M 1145 290 L 1145 296 L 550 296 L 550 348" fill="none" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="544,342 556,342 550,352" fill="#0A2540"/>
+<circle cx="880" cy="296" r="12" fill="#0A2540"/><text x="880" y="301" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">6</text>
+
+<!-- 7: vendors read back into BOTH frontend screens that display it (dashed = read, not write).
+     Junction sits in the clear 290-310 gap, clear of the DATABASE header text below it. -->
+<path d="M 465 352 L 465 300" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
+<path d="M 465 300 L 465 285" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
+<polygon points="459,291 471,291 465,281" fill="#0A2540"/>
+<path d="M 465 300 L 630 300 L 630 219 L 600 219" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
+<polygon points="594,213 594,225 604,219" fill="#0A2540"/>
+<circle cx="465" cy="300" r="12" fill="#FFFFFF" stroke="#0A2540" stroke-width="1.8"/><text x="465" y="305" font-size="11" font-weight="bold" fill="#0A2540" text-anchor="middle">7</text>
+
+<!-- 8: audit logger writes the decision + override to audit_log. Jog happens at
+     y=280-310 same as before, but the label sits lower on the vertical run (y=330),
+     clear of arrow 6's bus at y=296, so the two numbers never sit on each other's line. -->
+<path d="M 820 280 L 820 310 L 785 310 L 785 348" fill="none" stroke="#0A2540" stroke-width="1.8"/>
+<polygon points="779,342 791,342 785,352" fill="#0A2540"/>
+<circle cx="785" cy="330" r="12" fill="#0A2540"/><text x="785" y="335" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">8</text>
+
+<!-- ================= NUMBERED LIST — one scheme only, matches the badges above ================= -->
+<rect x="40" y="620" width="1520" height="300" rx="8" fill="#F7F9FB" stroke="#C3CFDD" stroke-width="1.5"/>
+<text x="60" y="650" font-size="15" font-weight="bold" fill="#0A2540">How a vendor gets screened — numbers match the badges above</text>
+
+<text x="60" y="682" font-size="12.5" font-weight="bold" fill="#0A2540">1</text>
+<text x="82" y="682" font-size="12.5" fill="#2E4A63">Analyst signs in and opens the Vendor Onboarding form.</text>
+
+<text x="60" y="706" font-size="12.5" font-weight="bold" fill="#0A2540">2</text>
+<text x="82" y="706" font-size="12.5" fill="#2E4A63">Form is posted to the backend; fields and formats are validated.</text>
+
+<text x="60" y="730" font-size="12.5" font-weight="bold" fill="#0A2540">3</text>
+<text x="82" y="730" font-size="12.5" fill="#2E4A63">Screening Engine queries the vendors table: exact ABN match, exact bank match, partial match.</text>
+
+<text x="60" y="754" font-size="12.5" font-weight="bold" fill="#0A2540">4</text>
+<text x="82" y="754" font-size="12.5" fill="#2E4A63">Those rule findings, plus the form, are handed to the LLM Gateway.</text>
+
+<text x="800" y="682" font-size="12.5" font-weight="bold" fill="#0A2540">5</text>
+<text x="822" y="682" font-size="12.5" fill="#2E4A63">Gateway calls Claude with a system + user prompt from /prompts/.</text>
+
+<text x="800" y="706" font-size="12.5" font-weight="bold" fill="#0A2540">6</text>
+<text x="822" y="706" font-size="12.5" fill="#2E4A63">Claude&#8217;s JSON reply (tier, anomalies, checklist, rationale) is validated and written to the vendor row.</text>
+
+<text x="800" y="730" font-size="12.5" font-weight="bold" fill="#0A2540">7</text>
+<text x="822" y="730" font-size="12.5" fill="#2E4A63">Reviewer sees the result and can approve it or override the tier — the override posts back through the same channel as step 2.</text>
+
+<text x="800" y="754" font-size="12.5" font-weight="bold" fill="#0A2540">8</text>
+<text x="822" y="754" font-size="12.5" fill="#2E4A63">Audit Logger writes that decision, and any override, to audit_log — nothing self-approves.</text>
+
+<line x1="60" y1="778" x2="1500" y2="778" stroke="#DDE3EA" stroke-width="1"/>
+
+<text x="60" y="804" font-size="11.5" font-family="monospace" fill="#C0392B">AI</text>
+<text x="90" y="804" font-size="11.5" fill="#2E4A63">= the model writes this field.</text>
+<text x="330" y="804" font-size="11.5" font-family="monospace" fill="#1E6B3A">human</text>
+<text x="390" y="804" font-size="11.5" fill="#2E4A63">= a person writes this field.</text>
+<text x="620" y="804" font-size="11.5" fill="#2E4A63">Dashed arrow = reading data back to a screen, not a new write.</text>
+
+<text x="60" y="828" font-size="11.5" fill="#2E4A63">If Claude times out or returns bad JSON: one retry, then the screen shows the rule findings alone with a plain banner —</text>
+<text x="60" y="848" font-size="11.5" fill="#2E4A63">it never blanks and it never auto-approves.</text>
+
+<text x="60" y="878" font-size="11.5" fill="#5A6C7E">Not built, by design: sanctions screening (no watchlist supplied), Processes 1 &amp; 2, SSO, mobile layouts, CI/CD, async queue.</text>
+
+<text x="40" y="1000" font-size="10.5" fill="#8A97A5">FinanceOS technical assessment &#183; Process 3 &#183; Vendor Risk &amp; Onboarding Screener &#183; seed data: 25 vendors, 3 exact duplicates, 2 partial duplicates</text>
+
+</svg>
