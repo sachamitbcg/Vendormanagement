@@ -81,15 +81,3 @@ Return your assessment as JSON matching the required schema:
 }
 ```
 
----
-
-## Iteration notes (talking points for the demo)
-
-- **v1** asked for free text. Output was inconsistent and hard to store, so v2 moved to a
-  JSON schema (design principle 6.3 — request structured output, don't regex free text).
-- **v2** let the model decide tiers with no anchoring; it rated partial duplicates as High.
-  v3 added the explicit exact-vs-partial rule so tiers line up with the seeded edge cases in
-  Appendix A (partial duplicate → Medium).
-- **v3** produced technical language ("ABN collision on record V-001"). The final version
-  pins the tone to Finance language and separates `anomalies` (what's wrong) from
-  `verify_checklist` (what to do), which is what a reviewer actually needs.
