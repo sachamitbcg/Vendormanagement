@@ -90,65 +90,54 @@
 <text x="56" y="349" font-size="9.5" font-style="italic" fill="#B0701F">repeatable: drop and recreate cleanly</text>
 
 <!-- users -->
-<rect x="70" y="352" width="230" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
-<rect x="70" y="352" width="230" height="26" rx="6" fill="#B0701F"/>
-<text x="185" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">users</text>
-<text x="82" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
-<text x="82" y="412" font-size="10" font-family="monospace" fill="#0A2540">    email</text>
-<text x="82" y="428" font-size="10" font-family="monospace" fill="#0A2540">    password_hash</text>
-<text x="82" y="444" font-size="10" font-family="monospace" fill="#0A2540">    role</text>
-<text x="82" y="460" font-size="10" font-family="monospace" fill="#0A2540">    created_at</text>
-<text x="82" y="486" font-size="9" fill="#8A6A10">Two seeded accounts —</text>
-<text x="82" y="499" font-size="9" fill="#8A6A10">one analyst, one reviewer.</text>
-<text x="82" y="512" font-size="9" fill="#8A6A10">Override step demos end</text>
-<text x="82" y="525" font-size="9" fill="#8A6A10">to end from these logins.</text>
+<rect x="95" y="352" width="300" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
+<rect x="95" y="352" width="300" height="26" rx="6" fill="#B0701F"/>
+<text x="245" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">users</text>
+<text x="107" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="107" y="412" font-size="10" font-family="monospace" fill="#0A2540">    email</text>
+<text x="107" y="428" font-size="10" font-family="monospace" fill="#0A2540">    password_hash</text>
+<text x="107" y="444" font-size="10" font-family="monospace" fill="#0A2540">    role</text>
+<text x="107" y="460" font-size="10" font-family="monospace" fill="#0A2540">    created_at</text>
+<text x="107" y="486" font-size="9" fill="#8A6A10">Two seeded accounts —</text>
+<text x="107" y="499" font-size="9" fill="#8A6A10">one analyst, one reviewer.</text>
+<text x="107" y="512" font-size="9" fill="#8A6A10">Override step demos end</text>
+<text x="107" y="525" font-size="9" fill="#8A6A10">to end from these logins.</text>
 
 <!-- vendors -->
-<rect x="340" y="352" width="270" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="2.5"/>
-<rect x="340" y="352" width="270" height="26" rx="6" fill="#B0701F"/>
-<text x="475" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">vendors</text>
-<text x="352" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
-<text x="352" y="411" font-size="10" font-family="monospace" fill="#0A2540">    name, contact, category</text>
-<text x="352" y="426" font-size="10" font-family="monospace" fill="#0A2540">    abn          (indexed)</text>
-<text x="352" y="441" font-size="10" font-family="monospace" fill="#0A2540">    bank_account (indexed)</text>
-<text x="352" y="456" font-size="10" font-family="monospace" fill="#0A2540">    onboarding_status</text>
-<text x="352" y="471" font-size="10" font-family="monospace" fill="#C0392B">    risk_tier        &#8592; AI</text>
-<text x="352" y="486" font-size="10" font-family="monospace" fill="#C0392B">    screening_notes  &#8592; AI</text>
-<text x="352" y="501" font-size="10" font-family="monospace" fill="#C0392B">    ai_rationale     &#8592; AI</text>
-<text x="352" y="516" font-size="10" font-family="monospace" fill="#1E6B3A">    human_override   &#8592; human</text>
-<text x="352" y="531" font-size="10" font-family="monospace" fill="#0A2540">    created_at</text>
+<rect x="510" y="352" width="300" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="2.5"/>
+<rect x="510" y="352" width="300" height="26" rx="6" fill="#B0701F"/>
+<text x="660" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">vendors</text>
+<text x="522" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="522" y="411" font-size="10" font-family="monospace" fill="#0A2540">    name, contact, category</text>
+<text x="522" y="426" font-size="10" font-family="monospace" fill="#0A2540">    abn          (indexed)</text>
+<text x="522" y="441" font-size="10" font-family="monospace" fill="#0A2540">    bank_account (indexed)</text>
+<text x="522" y="456" font-size="10" font-family="monospace" fill="#0A2540">    onboarding_status</text>
+<text x="522" y="471" font-size="10" font-family="monospace" fill="#C0392B">    risk_tier        &#8592; AI</text>
+<text x="522" y="486" font-size="10" font-family="monospace" fill="#C0392B">    screening_notes  &#8592; AI</text>
+<text x="522" y="501" font-size="10" font-family="monospace" fill="#C0392B">    ai_rationale     &#8592; AI</text>
+<text x="522" y="516" font-size="10" font-family="monospace" fill="#1E6B3A">    human_override   &#8592; human</text>
+<text x="522" y="531" font-size="10" font-family="monospace" fill="#0A2540">    created_at</text>
 
 <!-- audit_log -->
-<rect x="650" y="352" width="250" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
-<rect x="650" y="352" width="250" height="26" rx="6" fill="#B0701F"/>
-<text x="775" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">audit_log</text>
-<text x="662" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
-<text x="662" y="411" font-size="10" font-family="monospace" fill="#0A2540">FK  user_id</text>
-<text x="662" y="426" font-size="10" font-family="monospace" fill="#0A2540">    entity_type, entity_id</text>
-<text x="662" y="441" font-size="10" font-family="monospace" fill="#0A2540">    action</text>
-<text x="662" y="456" font-size="10" font-family="monospace" fill="#0A2540">    old_value, new_value</text>
-<text x="662" y="471" font-size="10" font-family="monospace" fill="#0A2540">    timestamp</text>
-<text x="662" y="497" font-size="9" font-style="italic" fill="#8A6A10">entity_id points at vendors.id —</text>
-<text x="662" y="510" font-size="9" font-style="italic" fill="#8A6A10">polymorphic, not a formal FK.</text>
-<text x="662" y="530" font-size="9" fill="#8A6A10">Feeds the Eval Log &amp; override rate.</text>
+<rect x="925" y="352" width="300" height="205" rx="6" fill="#FFFFFF" stroke="#B0701F" stroke-width="1.5"/>
+<rect x="925" y="352" width="300" height="26" rx="6" fill="#B0701F"/>
+<text x="1075" y="370" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">audit_log</text>
+<text x="937" y="396" font-size="10" font-family="monospace" fill="#0A2540">PK  id</text>
+<text x="937" y="411" font-size="10" font-family="monospace" fill="#0A2540">FK  user_id</text>
+<text x="937" y="426" font-size="10" font-family="monospace" fill="#0A2540">    entity_type, entity_id</text>
+<text x="937" y="441" font-size="10" font-family="monospace" fill="#0A2540">    action</text>
+<text x="937" y="456" font-size="10" font-family="monospace" fill="#0A2540">    old_value, new_value</text>
+<text x="937" y="471" font-size="10" font-family="monospace" fill="#0A2540">    timestamp</text>
+<text x="937" y="497" font-size="9" font-style="italic" fill="#8A6A10">entity_id points at vendors.id —</text>
+<text x="937" y="510" font-size="9" font-style="italic" fill="#8A6A10">polymorphic, not a formal FK.</text>
+<text x="937" y="530" font-size="9" fill="#8A6A10">Feeds the Eval Log &amp; override rate.</text>
 
 <!-- users -> audit_log real FK -->
-<path d="M 185 557 L 185 575 L 775 575 L 775 561" fill="none" stroke="#7A8794" stroke-width="1.4"/>
-<polygon points="769,555 781,555 775,565" fill="#7A8794"/>
-<rect x="620" y="566" width="200" height="15" fill="#FDF1E3"/>
-<text x="720" y="578" font-size="9.5" fill="#5A6C7E" text-anchor="middle">FK user_id &#183; 1..N (who did it)</text>
+<path d="M 245 557 L 245 575 L 1075 575 L 1075 561" fill="none" stroke="#7A8794" stroke-width="1.4"/>
+<polygon points="1069,555 1081,555 1075,565" fill="#7A8794"/>
+<rect x="560" y="566" width="200" height="15" fill="#FDF1E3"/>
+<text x="660" y="578" font-size="9.5" fill="#5A6C7E" text-anchor="middle">FK user_id &#183; 1..N (who did it)</text>
 
-<!-- not-built schema -->
-<rect x="930" y="352" width="330" height="205" rx="6" fill="#F4F5F7" stroke="#B8BFC7" stroke-width="1.5" stroke-dasharray="5,4"/>
-<text x="1095" y="378" font-size="11.5" font-weight="bold" fill="#7A8794" text-anchor="middle">Schema present, not exercised in this POC</text>
-<text x="945" y="404" font-size="10" font-family="monospace" fill="#7A8794">invoices &#183; purchase_orders &#183; budget_actuals</text>
-<text x="945" y="428" font-size="9.5" fill="#7A8794">Migrations create all six tables named in the</text>
-<text x="945" y="443" font-size="9.5" fill="#7A8794">brief so the schema matches it. Processes 1</text>
-<text x="945" y="458" font-size="9.5" fill="#7A8794">and 2 are not built for this demo — a scope</text>
-<text x="945" y="473" font-size="9.5" fill="#7A8794">call recorded in design-decisions.md.</text>
-<text x="945" y="499" font-size="9.5" fill="#7A8794">Sanctions screening is out of scope too:</text>
-<text x="945" y="514" font-size="9.5" fill="#7A8794">the brief names it but Appendix A supplies</text>
-<text x="945" y="529" font-size="9.5" fill="#7A8794">no watchlist to screen against.</text>
 
 <!-- ================= FLOW ARROWS (single numbering, matches list below) =================
      Routing rule: any line crossing between bands travels in the clear 290-310 gap
@@ -171,8 +160,8 @@
 
 <!-- 3: screening engine <-> vendors (query + result). Exit past Screening Engine's
      right edge (985) BEFORE dropping, so the vertical run never crosses Audit Logger (671-970). -->
-<path d="M 968 152 L 985 152 L 985 298 L 475 298 L 475 348" fill="none" stroke="#0A2540" stroke-width="2.2"/>
-<polygon points="469,342 481,342 475,352" fill="#0A2540"/>
+<path d="M 968 152 L 985 152 L 985 298 L 600 298 L 600 348" fill="none" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="594,342 606,342 600,352" fill="#0A2540"/>
 <polygon points="979,146 991,146 985,156" fill="none" stroke="#0A2540"/>
 <circle cx="985" cy="230" r="12" fill="#0A2540"/><text x="985" y="235" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
 
@@ -190,25 +179,25 @@
 <!-- 6: claude's validated reply, WRITTEN by the gateway into vendors — solid line,
      because this is a write, not a read-back (dashed is reserved for reads, see legend).
      Bus sits at y=296, well clear of badge 8's jog at y=310, so the two never merge. -->
-<path d="M 1145 290 L 1145 296 L 550 296 L 550 348" fill="none" stroke="#0A2540" stroke-width="2.2"/>
-<polygon points="544,342 556,342 550,352" fill="#0A2540"/>
-<circle cx="880" cy="296" r="12" fill="#0A2540"/><text x="880" y="301" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">6</text>
+<path d="M 1145 290 L 1145 334 L 700 334 L 700 348" fill="none" stroke="#0A2540" stroke-width="2.2"/>
+<polygon points="694,342 706,342 700,352" fill="#0A2540"/>
+<circle cx="920" cy="334" r="12" fill="#0A2540"/><text x="920" y="339" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">6</text>
 
 <!-- 7: vendors read back into BOTH frontend screens that display it (dashed = read, not write).
      Junction sits in the clear 290-310 gap, clear of the DATABASE header text below it. -->
-<path d="M 465 352 L 465 300" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
-<path d="M 465 300 L 465 285" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
-<polygon points="459,291 471,291 465,281" fill="#0A2540"/>
-<path d="M 465 300 L 630 300 L 630 219 L 600 219" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
+<path d="M 560 352 L 560 306" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
+<path d="M 560 306 L 560 285" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
+<polygon points="554,291 566,291 560,281" fill="#0A2540"/>
+<path d="M 560 306 L 630 306 L 630 219 L 600 219" fill="none" stroke="#0A2540" stroke-width="1.8" stroke-dasharray="5,4"/>
 <polygon points="594,213 594,225 604,219" fill="#0A2540"/>
-<circle cx="465" cy="300" r="12" fill="#FFFFFF" stroke="#0A2540" stroke-width="1.8"/><text x="465" y="305" font-size="11" font-weight="bold" fill="#0A2540" text-anchor="middle">7</text>
+<circle cx="560" cy="306" r="12" fill="#FFFFFF" stroke="#0A2540" stroke-width="1.8"/><text x="560" y="311" font-size="11" font-weight="bold" fill="#0A2540" text-anchor="middle">7</text>
 
 <!-- 8: audit logger writes the decision + override to audit_log. Jog happens at
      y=280-310 same as before, but the label sits lower on the vertical run (y=330),
      clear of arrow 6's bus at y=296, so the two numbers never sit on each other's line. -->
-<path d="M 820 280 L 820 310 L 785 310 L 785 348" fill="none" stroke="#0A2540" stroke-width="1.8"/>
-<polygon points="779,342 791,342 785,352" fill="#0A2540"/>
-<circle cx="785" cy="330" r="12" fill="#0A2540"/><text x="785" y="335" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">8</text>
+<path d="M 820 280 L 820 316 L 1050 316 L 1050 348" fill="none" stroke="#0A2540" stroke-width="1.8"/>
+<polygon points="1044,342 1056,342 1050,352" fill="#0A2540"/>
+<circle cx="935" cy="316" r="12" fill="#0A2540"/><text x="935" y="321" font-size="11.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">8</text>
 
 <!-- ================= NUMBERED LIST — one scheme only, matches the badges above ================= -->
 <rect x="40" y="620" width="1520" height="300" rx="8" fill="#F7F9FB" stroke="#C3CFDD" stroke-width="1.5"/>
