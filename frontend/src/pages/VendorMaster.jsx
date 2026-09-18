@@ -144,7 +144,11 @@ export default function VendorMaster() {
                   </tr>
                 ))}
                 {rows.length === 0 && (
-                  <tr><td colSpan={6} className="empty">No vendors match.</td></tr>
+                  <tr><td colSpan={6} className="empty">
+                    {vendors.length === 0
+                      ? "No vendors yet — submit one from “Onboard a vendor”."
+                      : "No vendors match this filter."}
+                  </td></tr>
                 )}
               </tbody>
             </table>
