@@ -169,11 +169,16 @@ def _http_client():
     try:
         import ssl
 
-        import httpx
         import truststore
 
         ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
-        return httpx.Client(verify=ctx, timeout=settings.llm_timeout_seconds)
+        # Newer anthropic SDKs ship httpx2; older ones use httpx. Use whichever the
+        # installed SDK expects so the custom (OS-trust-store) client is accepted.
+        try:
+            import httpx2 as _httpx
+        except ImportError:
+            import httpx as _httpx
+        return _httpx.Client(verify=ctx, timeout=settings.llm_timeout_seconds)
     except Exception:
         return None  # anthropic SDK will create its own default client
 

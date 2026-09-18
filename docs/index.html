@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FinanceOS — Vendor Risk &amp; Onboarding Screener (Preview)</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#fff; --ink:#1a2233; --muted:#6b7688; --line:#e4e8ef;
+    --brand:#1f4e79; --accent:#2563eb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);font-size:14px;line-height:1.55}
+  a{color:var(--accent)}
+  h1,h2,h3{margin:0 0 6px}
+  .preview-banner{background:#fff8e6;border-bottom:1px solid #f2e2b3;color:#7a5a00;
+    text-align:center;padding:8px 16px;font-size:13px}
+  .topbar{display:flex;align-items:center;gap:24px;background:var(--brand);color:#fff;
+    padding:0 24px;height:58px}
+  .brand{font-weight:700;font-size:18px}
+  .brand-sub{font-weight:400;opacity:.8;font-size:14px}
+  .nav{display:flex;gap:6px;flex:1}
+  .nav button{background:none;border:none;color:#dbe6f2;font:inherit;font-weight:500;
+    padding:8px 14px;border-radius:6px;cursor:pointer}
+  .nav button:hover{background:rgba(255,255,255,.12)}
+  .nav button.active{background:rgba(255,255,255,.2);color:#fff}
+  .userchip{font-size:12px;opacity:.9}
+  .wrap{max-width:1120px;margin:0 auto;padding:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;
+    box-shadow:0 1px 3px rgba(16,24,40,.06);margin-bottom:20px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .muted{color:var(--muted)} .small{font-size:12.5px}
+  .mono{font-family:ui-monospace,Consolas,monospace;font-size:12.5px}
+  label{display:block;font-weight:600;margin:12px 0 4px;font-size:13px}
+  input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:14px;background:#fff}
+  .primary{margin-top:16px;width:100%;background:var(--accent);color:#fff;border:none;padding:10px;
+    border-radius:6px;font-weight:600;font-size:14px;cursor:pointer}
+  .badge{display:inline-block;padding:2px 10px;border-radius:12px;border:1px solid;font-weight:700;font-size:12.5px}
+  .b-Low{background:#e6f4ea;color:#1e7e34;border-color:#bce3c6}
+  .b-Medium{background:#fff4e0;color:#b26a00;border-color:#f5d9a6}
+  .b-High{background:#fdecea;color:#c62828;border-color:#f5c2bd}
+  .src-pill{margin-left:8px;font-size:11px;color:var(--muted);background:#eef2f8;padding:2px 8px;border-radius:10px}
+  .tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;text-transform:capitalize;background:#eef2f8;color:#29405c}
+  .tag-exact{background:#fdecea;color:#c62828}.tag-partial{background:#fff4e0;color:#b26a00}
+  .tag-override{background:#ede9fe;color:#6d28d9}.tag-ai_screen{background:#e0f2fe;color:#0369a1}
+  .tag-approved{background:#e6f4ea;color:#1e7e34}
+  .rationale{background:#f0f6ff;border-left:3px solid var(--accent);padding:10px 12px;border-radius:4px;margin:14px 0}
+  .subhead{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);margin:14px 0 6px}
+  ul.findings,ul.checklist{margin:0;padding-left:18px}
+  ul.checklist{list-style:none;padding-left:0}
+  ul.checklist li::before{content:"\2610  ";color:var(--accent)}
+  .review-box{background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:12px;margin-top:14px}
+  .chip{background:#eef2f8;border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:12.5px;color:#29405c;cursor:pointer}
+  .chip.ghost{background:transparent}
+  .btn-approve{background:#1e7e34;color:#fff;border:none;padding:8px 14px;border-radius:6px;font-weight:600;cursor:pointer}
+  .btn-reject{background:#fff;color:#c62828;border:1px solid #f5c2bd;padding:8px 14px;border-radius:6px;font-weight:600;cursor:pointer}
+  .btn-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .kpi-value{font-size:26px;font-weight:700;color:var(--brand)}
+  .kpi-label{color:var(--muted);font-size:12.5px}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+  tbody tr:hover{background:#fafbfc}
+  .status{padding:2px 8px;border-radius:10px;font-size:12px;font-weight:600;text-transform:capitalize}
+  .status-pending{background:#fff4e0;color:#b26a00}.status-approved{background:#e6f4ea;color:#1e7e34}
+  .flow{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;margin-top:8px}
+  .flow div{padding-left:26px;position:relative}
+  .flow b{position:absolute;left:0;top:0;background:var(--brand);color:#fff;width:19px;height:19px;
+    border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center}
+  .stackrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{background:#eef2f8;border:1px solid var(--line);border-radius:14px;padding:4px 12px;font-size:12.5px}
+  .hero{background:linear-gradient(135deg,#1f4e79,#2b6aa8);color:#fff;border:none}
+  .hero h1{font-size:24px}.hero p{opacity:.92;margin:6px 0 0;max-width:720px}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .screen{display:none}.screen.active{display:block}
+  .note{font-size:12px;color:var(--muted);margin-top:6px}
+  .arch img{width:100%;border:1px solid var(--line);border-radius:8px}
+  @media(max-width:900px){.grid-2,.two-col{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  📄 Static preview for the team — this is a clickable mock-up of the real app. A live, running demo will follow.
+</div>
+
+<header class="topbar">
+  <div class="brand">FinanceOS <span class="brand-sub">· Vendor Screener</span></div>
+  <nav class="nav">
+    <button data-screen="overview" class="active">Overview</button>
+    <button data-screen="onboard">Onboard &amp; Screen</button>
+    <button data-screen="master">Vendor Master</button>
+  </nav>
+  <div class="userchip">reviewer@financeos.demo · reviewer</div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <div class="screen active" id="overview">
+    <div class="card hero">
+      <h1>Vendor Risk &amp; Onboarding Screener</h1>
+      <p>Screens every new vendor against the existing vendor master, uses AI (Anthropic Claude)
+      to recommend a risk tier with a plain-English rationale, and keeps a human reviewer in
+      control of every decision.</p>
+      <div class="stackrow">
+        <span class="pill">React (Vite)</span>
+        <span class="pill">FastAPI</span>
+        <span class="pill">SQLite + Alembic</span>
+        <span class="pill">Anthropic Claude</span>
+        <span class="pill">JWT auth</span>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h2>The problem</h2>
+        <p class="muted">Procurement onboards 30–50 vendors a quarter. Each needs a compliance
+        screen — duplicate detection (same bank account or ABN) and a document-completeness
+        check — today done manually by one analyst cross-referencing spreadsheets.</p>
+        <h2 style="margin-top:16px">What this does</h2>
+        <ul class="findings muted">
+          <li>Deterministic engine finds <b>exact</b> &amp; <b>partial</b> duplicates + missing fields.</li>
+          <li>Claude turns those findings into a risk tier, rationale &amp; reviewer checklist.</li>
+          <li>Reviewer overrides / approves; every decision is logged for override-rate tracking.</li>
+          <li>Falls back to rules if AI is unavailable — never auto-approves.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>How a vendor gets screened</h2>
+        <div class="flow small">
+          <div><b>1</b>Analyst opens the onboarding form.</div>
+          <div><b>2</b>Form posted &amp; validated.</div>
+          <div><b>3</b>Engine checks vendor master: exact / partial / bank match.</div>
+          <div><b>4</b>Findings + form handed to the AI gateway.</div>
+          <div><b>5</b>Claude called with a versioned prompt.</div>
+          <div><b>6</b>JSON reply (tier, anomalies, checklist) stored on the vendor.</div>
+          <div><b>7</b>Reviewer approves or overrides the tier.</div>
+          <div><b>8</b>Every AI decision &amp; override written to the audit log.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card arch">
+      <h2>Solution architecture</h2>
+      <p class="muted small">Frontend → FastAPI (Auth · Screening Engine · Audit Logger) → LLM Gateway → Claude, over a SQLite database.</p>
+      <img src="architecture.png" alt="Solution architecture diagram"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="note" style="display:none">
+        (architecture.png sits next to this file in <span class="mono">/docs</span> — open it alongside for the full diagram.)
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ONBOARD & SCREEN ===================== -->
+  <div class="screen" id="onboard">
+    <div class="grid-2">
+      <div class="card">
+        <h2>Onboard a vendor</h2>
+        <p class="muted small">Submit a new vendor. It's checked against the vendor master for
+          duplicates, then AI recommends a risk tier — a reviewer has the final say.</p>
+        <div class="btn-row" style="margin:12px 0">
+          <span class="muted small">Preview case:</span>
+          <span class="chip" style="background:#fdecea;border-color:#f5c2bd">Exact duplicate (Acme) — loaded</span>
+        </div>
+        <label>Vendor name *</label><input value="Acme Consulting (renewal)" readonly>
+        <label>Tax ID / ABN</label><input value="12 345 678 901" readonly>
+        <label>Bank account</label><input value="BSB 062-000 / 12345678" readonly>
+        <label>Category</label><input value="Consulting" readonly>
+        <label>Contact</label><input value="ap@acme.example.com" readonly>
+        <button class="primary" onclick="document.getElementById('result').style.display='block';this.textContent='Screened ✓';">
+          Screen &amp; submit
+        </button>
+        <div class="note">Click to reveal the screening result →</div>
+      </div>
+
+      <div class="card">
+        <h2>Screening result</h2>
+        <div id="result" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:12px">
+            <div>
+              <div class="muted small">AI recommended tier</div>
+              <div style="margin-top:4px"><span class="badge b-High">High</span><span class="src-pill">Claude</span></div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-weight:700">Acme Consulting (renewal)</div>
+              <div class="muted small">Vendor #26 · status: pending</div>
+            </div>
+          </div>
+
+          <p class="rationale">This vendor shares both the same ABN and the same bank account as
+            two existing suppliers already in the vendor master, which strongly indicates a
+            duplicate record or a potential double-payment route.</p>
+
+          <div class="subhead">Duplicate check</div>
+          <ul class="findings small">
+            <li><span class="tag tag-exact">exact</span> matches <b>Acme Consulting Ltd</b> on abn, bank_account</li>
+            <li><span class="tag tag-exact">exact</span> matches <b>Acme Consulting Pty Ltd</b> on abn, bank_account</li>
+          </ul>
+
+          <div class="subhead">Anomalies flagged</div>
+          <ul class="findings small">
+            <li>Same ABN and bank account as existing supplier 'Acme Consulting Ltd'</li>
+            <li>Same ABN and bank account as existing supplier 'Acme Consulting Pty Ltd'</li>
+            <li>Name suggests a 'renewal' of an already-active supplier relationship</li>
+          </ul>
+
+          <div class="subhead">What the reviewer should verify</div>
+          <ul class="checklist small">
+            <li>Confirm whether this is a duplicate of the existing 'Acme Consulting' records rather than a new entity.</li>
+            <li>Decide whether to update an existing record instead of creating a new payment route.</li>
+            <li>Verify bank-account ownership and which single vendor record it should link to.</li>
+          </ul>
+
+          <div class="review-box">
+            <div class="subhead" style="margin-top:0">Reviewer decision</div>
+            <div class="btn-row"><span class="muted small">Override tier:</span>
+              <span class="chip">Low</span><span class="chip">Medium</span><span class="chip" style="background:var(--accent);color:#fff;border-color:var(--accent)">High</span>
+            </div>
+            <div class="btn-row">
+              <button class="btn-approve">Approve onboarding</button>
+              <button class="btn-reject">Reject</button>
+            </div>
+          </div>
+        </div>
+        <div id="empty" class="muted" style="padding:24px 4px">
+          No vendor screened yet. Press <b>Screen &amp; submit</b> on the left.
+        </div>
+      </div>
+    </div>
+    <script>
+      // hide empty-state once result shows
+      new MutationObserver(()=>{document.getElementById('empty').style.display =
+        document.getElementById('result').style.display==='block'?'none':'block';})
+        .observe(document.getElementById('result'),{attributes:true,attributeFilter:['style']});
+    </script>
+  </div>
+
+  <!-- ===================== VENDOR MASTER ===================== -->
+  <div class="screen" id="master">
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-value">26</div><div class="kpi-label">Vendors on file</div></div>
+      <div class="kpi"><div class="kpi-value">1</div><div class="kpi-label">AI screenings run</div></div>
+      <div class="kpi"><div class="kpi-value">0</div><div class="kpi-label">Human overrides</div></div>
+      <div class="kpi"><div class="kpi-value">0%</div><div class="kpi-label">Override rate</div></div>
+      <div class="kpi"><div class="kpi-value">1</div><div class="kpi-label">Pending review</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Vendor master</h2>
+      <p class="muted small">Click any vendor to review its screening and approve, reject, or override the tier.</p>
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Category</th><th>Tax ID / ABN</th><th>Risk tier</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr style="background:#fff8f7"><td class="muted">26</td><td>Acme Consulting (renewal)</td><td>Consulting</td><td class="mono">12 345 678 901</td><td><span class="badge b-High">High</span></td><td><span class="status status-pending">pending</span></td></tr>
+          <tr><td class="muted">1</td><td>Acme Consulting Ltd</td><td>Consulting</td><td class="mono">12 345 678 901</td><td><span class="badge b-Low">—</span></td><td><span class="status status-approved">approved</span></td></tr>
+          <tr><td class="muted">10</td><td>Acme Consulting Pty Ltd</td><td>Consulting</td><td class="mono">12 345 678 901</td><td><span class="badge b-Low">—</span></td><td><span class="status status-approved">approved</span></td></tr>
+          <tr><td class="muted">2</td><td>Global Print Co</td><td>Supplies</td><td class="mono">98 765 432 100</td><td><span class="badge b-Low">—</span></td><td><span class="status status-approved">approved</span></td></tr>
+          <tr><td class="muted">14</td><td>Global Print Company</td><td>Supplies</td><td class="mono">98 765 432 100</td><td><span class="badge b-Low">—</span></td><td><span class="status status-approved">approved</span></td></tr>
+          <tr><td class="muted">6</td><td>TechForce Recruitment</td><td>HR</td><td class="mono">44 333 222 111</td><td><span class="badge b-Low">—</span></td><td><span class="status status-approved">approved</span></td></tr>
+          <tr><td class="muted">22</td><td>TechForce Talent</td><td>HR</td><td class="mono">44 333 222 111</td><td><span class="badge b-Low">—</span></td><td><span class="status status-approved">approved</span></td></tr>
+        </tbody>
+      </table>
+      <div class="note">Showing 7 of 26 — the seeded master has 25 vendors incl. deliberate duplicates &amp; partial-duplicates.</div>
+    </div>
+
+    <div class="card">
+      <h2>Eval log — AI decisions &amp; human overrides</h2>
+      <p class="muted small">Every AI screening and human override is recorded — this is what lets us measure override rate and improve the model.</p>
+      <table>
+        <thead><tr><th>When</th><th>User</th><th>Action</th><th>Vendor</th><th>From → To</th></tr></thead>
+        <tbody>
+          <tr><td class="muted small">just now</td><td class="small">analyst@financeos.demo</td><td><span class="tag tag-ai_screen">ai screen</span></td><td class="muted">#26</td><td class="small">— → High (llm)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.nav button').forEach(btn=>{
+    btn.onclick=()=>{
+      document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.screen).classList.add('active');
+      window.scrollTo(0,0);
+    };
+  });
+</script>
+</body>
+</html>
