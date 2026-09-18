@@ -1,18 +1,15 @@
 """ORM models.
 
-The brief mandates six tables (section 3.3). Process 3 (Vendor Screener) actively
-exercises `users`, `vendors`, and `audit_log`. The remaining three
-(`invoices`, `purchase_orders`, `budget_actuals`) are created so the schema matches
-the brief exactly, but are not used by this POC — this is a deliberate, documented
-scope decision (see docs/design-decisions.md and the diagram's "schema present, not
-exercised" note).
+Scoped to Process 3 (Vendor Risk & Onboarding Screener): `users`, `vendors`, and
+`audit_log`. The brief lists tables for the other two processes
+(`invoices`, `purchase_orders`, `budget_actuals`); those are intentionally omitted
+here since this POC implements only Process 3 (see docs/design-decisions.md).
 """
 from datetime import datetime, timezone
 
 from sqlalchemy import (
     Column,
     DateTime,
-    Float,
     ForeignKey,
     Integer,
     String,
@@ -69,45 +66,3 @@ class AuditLog(Base):
     old_value = Column(Text)
     new_value = Column(Text)
     timestamp = Column(DateTime, default=_utcnow)
-
-
-# ---------------------------------------------------------------------------
-# Schema present to match the brief (section 3.3) but NOT exercised by Process 3.
-# ---------------------------------------------------------------------------
-class PurchaseOrder(Base):
-    __tablename__ = "purchase_orders"
-
-    id = Column(Integer, primary_key=True)
-    po_number = Column(String, index=True)
-    vendor_id = Column(Integer, ForeignKey("vendors.id"))
-    approved_amount = Column(Float)
-    cost_centre = Column(String)
-    status = Column(String)
-
-
-class Invoice(Base):
-    __tablename__ = "invoices"
-
-    id = Column(Integer, primary_key=True)
-    vendor_id = Column(Integer, ForeignKey("vendors.id"))
-    po_number = Column(String)
-    amount = Column(Float)
-    status = Column(String)
-    ai_recommendation = Column(String)
-    ai_rationale = Column(Text)
-    human_override = Column(String)
-    created_at = Column(DateTime, default=_utcnow)
-
-
-class BudgetActual(Base):
-    __tablename__ = "budget_actuals"
-
-    id = Column(Integer, primary_key=True)
-    cost_centre = Column(String)
-    period = Column(String)
-    budget_amount = Column(Float)
-    actual_amount = Column(Float)
-    variance_pct = Column(Float)
-    narrative = Column(Text)
-    narrative_approved = Column(String)
-    approved_by = Column(String)

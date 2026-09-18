@@ -68,7 +68,7 @@ blank is fine** — the app runs in rule-only fallback mode.
 Create the schema (migrations):
 
 ```bash
-alembic upgrade head        # creates all six tables
+alembic upgrade head        # creates the Process 3 tables (users, vendors, audit_log)
 ```
 
 Run the API:
@@ -147,7 +147,7 @@ Vendormanagement/
 │  ├─ alembic.ini / alembic/     # migrations
 │  └─ app/
 │     ├─ main.py                 # FastAPI app
-│     ├─ models.py               # all six tables (3 exercised, 3 schema-only)
+│     ├─ models.py               # Process 3 tables: users, vendors, audit_log
 │     ├─ screening.py            # deterministic duplicate / completeness engine
 │     ├─ llm_gateway.py          # Claude call + parse + retry + fallback
 │     ├─ audit.py                # logs every AI decision & human override
@@ -160,8 +160,8 @@ Vendormanagement/
 
 - **No key needed to try it.** Rule-only fallback covers the full flow; add a key for live
   Claude output.
-- The three non-vendor tables (`invoices`, `purchase_orders`, `budget_actuals`) exist so the
-  schema matches the brief exactly, but are **not exercised** by this POC — a deliberate,
-  documented scope choice (see `docs/design-decisions.md`).
+- The schema is **scoped to Process 3** (`users`, `vendors`, `audit_log`). The brief's other
+  tables (`invoices`, `purchase_orders`, `budget_actuals`) belong to Processes 1 & 2 and are
+  intentionally omitted — see `docs/design-decisions.md`.
 - Ports: backend `8000`, frontend `5173`. If you change the backend port, set
   `VITE_API_BASE` for the frontend.

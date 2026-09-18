@@ -51,16 +51,19 @@ eval log is also the honest record of who decided what — a real Finance contro
 foreign key, so it can reference other entity types later without a schema change — at the
 cost of DB-level referential integrity on that column.
 
-## 5. Schema matches the brief; scope is deliberately narrowed to Process 3
+## 5. Schema scoped to Process 3
 
-All six tables from section 3.3 are created via Alembic, but only `users`, `vendors`, and
-`audit_log` are exercised. `invoices`, `purchase_orders`, and `budget_actuals` are
-schema-only.
+The database contains only the tables Process 3 needs: `users`, `vendors`, and
+`audit_log`, all created via Alembic. The brief's section 3.3 also lists tables for the
+other two processes (`invoices`, `purchase_orders` for Process 1; `budget_actuals` for
+Process 2); those are intentionally omitted because this POC implements Process 3 only.
 
-*Why:* scope discipline (design 6.5) — one process built well beats three half-built. Having
-the full schema present keeps the door open and matches the brief exactly.
-*Trade-off:* those three tables are dead weight in this POC; that's the intended signal, not
-an oversight.
+*Why:* scope discipline (design 6.5) — one process built well beats a schema padded with
+tables no code touches. Keeping the model lean means every table, column, and index in the
+repo is actually exercised, which reads more honestly than dead scaffolding.
+*Trade-off:* the schema no longer mirrors the full six-table list in the brief; if a
+reviewer wants to see the other processes' tables, they'd be added when those processes are
+built (each is a one-migration change).
 
 ---
 
