@@ -80,4 +80,3 @@ Return your assessment as JSON matching the required schema:
   "additionalProperties": false
 }
 ```
-
