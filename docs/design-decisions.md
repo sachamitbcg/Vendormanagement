@@ -1,89 +1,46 @@
 # Design decisions & trade-offs
 
-Five decisions that shaped this build, and what I traded away for each.
+Five decisions that shaped this build, each with what I traded away.
 
-## 1. Rules first, LLM second — the model never invents a duplicate
+**1. Rules first, LLM second.** A deterministic engine (`screening.py`) normalises tax IDs
+and bank accounts and finds exact/partial duplicates *before* the LLM runs; those findings
+are handed to Claude as ground truth. The model does judgement and wording (tier, rationale,
+reviewer checklist), not fact-finding. *Why:* duplicate detection must be 100% reproducible
+and auditable — a Finance control can't rely on a probabilistic model to notice that two bank
+accounts match. *Trade-off:* matching is exact-on-normalised-fields; fuzzy name matching
+("Ltd" vs "Limited") is out of scope.
 
-Duplicate detection is done by a deterministic engine (`screening.py`) that normalises tax
-IDs and bank accounts and compares them against the vendor master **before** the LLM is
-called. The rule findings are then handed to Claude as ground truth. The model's job is
-judgement and communication (tier + rationale + reviewer checklist), not fact-finding.
+**2. AI degrades gracefully, never auto-approves.** The gateway requests API-enforced JSON
+(`output_config.format`), parses and stores it, retries once, and on any failure (no key,
+timeout, bad JSON) falls back to a rule-derived tier with a UI banner. Vendors are always
+created `pending`; approval is a separate, reviewer-only action. *Why:* the brief requires
+graceful failure and AI-as-assistant (3.2, 6.2, 6.4) — a demo that survives a dropped network
+beats one that crashes. *Trade-off:* the fallback rationale is templated, so it reads less
+naturally than Claude's.
 
-*Why:* duplicate detection is exactly the kind of thing that must be 100% reproducible and
-auditable — a Finance control can't depend on a probabilistic model to notice that two bank
-accounts match. It also keeps the exact-vs-partial logic testable in isolation.
-*Trade-off:* the rules are intentionally simple (exact-match on normalised fields). Fuzzy
-name matching ("Acme Ltd" vs "Acme Limited") is out of scope; the model can still comment on
-near-matches it's shown, but the hard duplicate signal is rule-based.
+**3. Prompt externalised.** The system + user prompt and the JSON response schema live in
+`prompts/vendor_screening.md`, parsed at startup; route handlers hold no prompt text. *Why:*
+design 6.3 — prompts should be externalised, structured, and tunable without touching code.
+*Trade-off:* a little parsing code and a light file convention rather than a template engine.
 
-## 2. The LLM layer degrades gracefully and never auto-approves
+**4. Everything auditable.** `audit.py` logs every AI decision and every human override; the
+dashboard derives AI-vs-human override rate from that log. *Why:* "if you cannot measure
+override rate, you cannot improve the model" (6.2), and it is the honest record of who decided
+what. *Trade-off:* `audit_log.entity_id` is a polymorphic pointer at a vendor, not a formal
+foreign key — flexible for other entity types later, but no DB-level integrity on that column.
 
-The gateway requests **structured JSON** (via `output_config.format`), parses and stores it,
-retries once, and on any failure (no key, timeout, rate-limit, bad JSON) falls back to a
-rule-derived tier and surfaces the error to the UI as a banner. New vendors are always
-created as `pending`; approval is a separate, reviewer-only action.
+**5. Schema scoped to Process 3.** Only `users`, `vendors`, and `audit_log` exist, via
+Alembic. The brief's other-process tables (`invoices`, `purchase_orders`, `budget_actuals`)
+are intentionally omitted. *Why:* scope discipline (6.5) — every table in the repo is actually
+exercised, which reads more honestly than dead scaffolding. *Trade-off:* the schema no longer
+mirrors the brief's full six-table list; each is a one-migration add when those processes are
+built.
 
-*Why:* the brief is explicit — handle LLM failure gracefully, show a fallback state, and
-treat AI as an assistant, not an oracle (design 3.2, 6.2, 6.4). A demo that survives a
-dropped network or a missing key is worth more than one that crashes.
-*Trade-off:* the fallback rationale is templated rather than generated, so it reads less
-naturally than Claude's output — an acceptable price for always-on reliability.
+**Not built (deliberately):** sanctions/watchlist screening (Appendix A supplies no watchlist
+to screen against, so it would be a stub — the reviewer checklist prompts a human instead);
+fuzzy name matching (keeps the duplicate signal deterministic); SSO, mobile, multi-tenancy,
+CI/CD, and production-grade security (out of scope per 6.5).
 
-## 3. Prompt is externalised and version-controlled
-
-The full system + user prompt and the JSON response schema live in
-`prompts/vendor_screening.md`, parsed at startup. Route handlers contain no prompt text.
-
-*Why:* design 6.3 — prompts should be externalised, structured, and iterable. It also means
-the prompt can be reviewed and tuned by a non-engineer, and the iteration history is captured
-in one place (useful for the "explain one prompt" part of the interview).
-*Trade-off:* a small amount of parsing code, and the prompt format is a light convention
-rather than a formal template engine.
-
-## 4. Everything is auditable; the dashboard measures override rate
-
-`audit.py` writes a row for every AI screening and every human override/approval/rejection.
-The dashboard derives AI-vs-human override rate directly from that log.
-
-*Why:* "if you cannot measure override rate, you cannot improve the model" (design 6.2). The
-eval log is also the honest record of who decided what — a real Finance control requirement.
-*Trade-off:* `audit_log.entity_id` is a polymorphic pointer at `vendors.id`, not a formal
-foreign key, so it can reference other entity types later without a schema change — at the
-cost of DB-level referential integrity on that column.
-
-## 5. Schema scoped to Process 3
-
-The database contains only the tables Process 3 needs: `users`, `vendors`, and
-`audit_log`, all created via Alembic. The brief's section 3.3 also lists tables for the
-other two processes (`invoices`, `purchase_orders` for Process 1; `budget_actuals` for
-Process 2); those are intentionally omitted because this POC implements Process 3 only.
-
-*Why:* scope discipline (design 6.5) — one process built well beats a schema padded with
-tables no code touches. Keeping the model lean means every table, column, and index in the
-repo is actually exercised, which reads more honestly than dead scaffolding.
-*Trade-off:* the schema no longer mirrors the full six-table list in the brief; if a
-reviewer wants to see the other processes' tables, they'd be added when those processes are
-built (each is a one-migration change).
-
----
-
-## What I did **not** build, and why
-
-- **Sanctions / watchlist screening.** The brief names it, but Appendix A supplies no
-  watchlist to screen against, so any implementation would be a stub. Left out rather than
-  faked; the reviewer checklist prompts the human to run it.
-- **Fuzzy name matching.** Deferred to keep the duplicate signal deterministic (see #1).
-- **SSO, mobile layouts, multi-tenancy, CI/CD, production-grade security.** Explicitly out of
-  scope per the brief (design 6.5).
-- **Streaming LLM responses / prompt versioning UI.** Encouraged extras; skipped in favour of
-  reliability and a clean human-in-the-loop flow. The prompt file already records its own
-  iteration history.
-
-## If I had more time
-
-- Fuzzy name matching with a confidence score feeding the LLM.
-- A proper eval harness: replay historical decisions, compare AI tier vs final human tier,
-  track precision/recall per tier over time.
-- Per-field validation of ABN checksums and BSB formats.
-- Unit tests around `screening.py` edge cases (the Appendix A4 duplicates make a ready-made
-  fixture set).
+**With more time:** fuzzy name matching with a confidence score feeding the LLM; an eval
+harness comparing AI tier vs final human tier over time; ABN-checksum and BSB-format
+validation; unit tests for `screening.py` (the Appendix A4 duplicates are a ready fixture set).
